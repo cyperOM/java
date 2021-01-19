@@ -39,6 +39,7 @@ public class Interface {
                 }
                 for (int i = 0; i < lines.size(); i++) Display.setText(lines.get(i));
             }
+
         });
         copy.addActionListener(new ActionListener() {
             @Override
@@ -70,7 +71,7 @@ Display.setText("https://instagram.com/p.r3");
 
     }
 
-    public String[] readLines() throws IOException   //this function will read the data from the txt and then convert them into a public var
+    public void readLines() throws IOException   //this function will read the data from the txt and then convert them into a public var
     {
         FileReader fileReader = new FileReader(filename);
 
@@ -85,7 +86,8 @@ Display.setText("https://instagram.com/p.r3");
 
         bufferedReader.close();
 
-        return lines.toArray(new String[lines.size()]);
+        lines.toArray(new String[0]);
+
     }
 
 
