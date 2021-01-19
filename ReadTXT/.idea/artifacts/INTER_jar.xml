@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="INTER:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/INTER_jar</output-path>
+    <root id="archive" name="INTER.jar">
+      <element id="module-output" name="INTER" />
+    </root>
+  </artifact>
+</component>
