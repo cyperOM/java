@@ -1,0 +1,80 @@
+//Jave GUI code that allows you to browse and select files from a directory using checkboxes. The selected files are displayed in a label and printed to the console.
+
+import javax.swing.*;
+import java.io.File;
+import java.awt.*;
+import java.security.PublicKey;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+public class Main {
+
+    private static File[] files;
+    private static ArrayList<String> selectedOptions = new ArrayList<>(); // Stores selected options
+
+    public Main() {
+
+        JFrame fr=new JFrame();
+        JPanel p=new JPanel();
+        JLabel Printer = new JLabel("tEST");
+        int nofiles = files.length;
+        JCheckBox cb[]=new JCheckBox[nofiles];
+        Printer.setBounds(50,50, 100,30);
+        fr.add(p);
+        p.add(Printer);
+
+        int i=0;
+        for (File file : files) {
+            cb[i]=new JCheckBox(file.getName());
+            cb[i].setVisible(true);
+            p.add(cb[i]);
+            cb[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JCheckBox clickedCheckbox = (JCheckBox) e.getSource();
+                    String selectedOption = clickedCheckbox.getText();
+
+                    if (clickedCheckbox.isSelected()) {
+                        // Add to selected options if not already present
+                        if (!selectedOptions.contains(selectedOption)) {
+                            selectedOptions.add(selectedOption);
+                        }
+                        System.out.println("Selected options: " + selectedOptions);
+                        Printer.setText(String.valueOf(selectedOptions));
+
+                    } else {
+                        // Remove from selected options
+                        selectedOptions.remove(selectedOption);
+                        System.out.println("Selected options: " + selectedOptions);
+                        Printer.setText(String.valueOf(selectedOptions));
+
+                    }
+                }
+            });
+            i++;
+        }
+        fr.setVisible(true);
+        fr.setSize(400,400);
+
+    }
+
+    public static void main(String[] args) {
+
+
+//Change the file path
+
+        String directoryPath = "File path goes here";
+
+        File directory = new File(directoryPath);
+
+        files = directory.listFiles();
+
+        new Main();
+
+
+    }
+
+
+}
